@@ -1,4 +1,5 @@
 import React from "react";
+import uc from "../assets/homecare.png";
 
 // const Navbar = () => {
 //   return <div>Navbar</div>;
@@ -87,7 +88,7 @@ export default function LandingPage_Navbar() {
             <Box>
               <Go to={`/${localStorage.getItem("location")}`}>
                 <Image
-                  src="https://res.cloudinary.com/urbanclap/image/upload/images/growth/home-screen/1631097450980-d2de38.png"
+                  src={uc}         
                   width={"30%"}
                 />
               </Go>
@@ -96,7 +97,7 @@ export default function LandingPage_Navbar() {
               as={"nav"}
               spacing={20}
               display={{ base: "none", md: "flex" }}
-              // border={"1px solid red"}
+              // border={"5px solid red"}
             >
               {Links.map((link, index) => (
                 <Go to={link.link} key={index}>
@@ -105,26 +106,6 @@ export default function LandingPage_Navbar() {
               ))}
             </HStack>
 
-            {/* <Flex alignItems={"center"}>
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                  color={"whiteAlpha.900"}
-                >
-                  {"Login"}
-                </MenuButton>
-                <MenuList color={"blackAlpha.900"}>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
-                </MenuList>
-              </Menu>
-            </Flex> */}
             <Login />
           </HStack>
         </Flex>

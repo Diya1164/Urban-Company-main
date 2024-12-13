@@ -67,7 +67,7 @@ export default function LargeWithAppLinksAndSocial() {
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={"flex-start"}>
             <ListHeader>Company</ListHeader>
-            <Link href={"#"}>About Us</Link>
+            <Link href={"/About"}>About Us</Link>
             <Link href={"#"}>Blog</Link>
             <Link href={"#"}>Careers</Link>
             <Link href={"#"}>Contact Us</Link>
@@ -75,8 +75,8 @@ export default function LargeWithAppLinksAndSocial() {
 
           <Stack align={"flex-start"}>
             <ListHeader>Support</ListHeader>
-            <Link href={"#"}>Help Center</Link>
-            <Link href={"#"}>Safety Center</Link>
+            <Link href={"/help"}>Help Center</Link>
+            <Link href={""}>Safety Center</Link>
             <Link href={"#"}>Community Guidelines</Link>
           </Stack>
 
@@ -116,7 +116,7 @@ export default function LargeWithAppLinksAndSocial() {
           justify={{ md: "space-between" }}
           align={{ md: "center" }}
         >
-          <Text>© 2022 Urban Company. All rights reserved</Text>
+          <Text>©  All rights reserved</Text>
           <Stack direction={"row"} spacing={6}>
             <SocialButton label={"Twitter"} href={"#"}>
               <FaTwitter />

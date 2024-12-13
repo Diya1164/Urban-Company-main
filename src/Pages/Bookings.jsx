@@ -46,8 +46,7 @@ const Bookings = () => {
 
         <Container mt={"20"}>
           <Text fontWeight={"medium"}>
-            You don't have any active projects right now
-          </Text>
+Deepika date salon service          </Text>
         </Container>
         <Button
           letterSpacing={"0.6em"}

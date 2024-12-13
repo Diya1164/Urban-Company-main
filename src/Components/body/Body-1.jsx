@@ -9,9 +9,10 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import "../../StyleComponents/body_1.css";
-import woman from "../../assets/woman_uc.png";
+import homePic from "../../assets/homePic_project.jpg";
 import { Cities } from "../../assets/Cities";
 import { Link, useNavigate } from "react-router-dom";
+import homecare  from  "../../assets/homecare.png";
 
 const Body_1 = () => {
   console.log(Cities);
@@ -31,12 +32,12 @@ const Body_1 = () => {
   return (
     <div>
       <Box className="hero" pos={"relative"}>
-        <Image w={"56%"} src={woman} />
+        <Image w={"60%"} src={homePic} />
 
         <Box
           width={"100%"}
           height={"100%"}
-          // border={"1px solid yellow"}
+          // border={"5px solid yellow"}
           className="text"
           fontWeight={"bold"}
           pos={"absolute"}
@@ -45,21 +46,28 @@ const Body_1 = () => {
         >
           {/* <Text border={"1px solid yellow"}>Sample Text</Text> */}
           <Box
-            // border={"1px solid blue"}
+            // border={"5px solid blue"}
             width={"44%"}
             marginLeft={"55%"}
             h={"100%"}
           >
+      <Image
+        width={"30%"}
+        src={homecare}
+        style={{marginLeft:'30%'}}
+   
+        />
+        <br />
             <VStack gap={5}>
-              <Text className="heading">URBAN COMPANY</Text>
-              <Text className="subHeading">
-                Quality home services, on demand
+              <Text className="subHeading" style={{marginLeft:'20%'}}>HOME CARE</Text>
+              <Text className="subHeading" fontSize="xl" style={{marginLeft:'20%'}}>
+                Making Your Life Easier Everyday
               </Text>
               <br />
-              <Text className="exp" w={"25rem"} textAlign={"left"}>
-                Experienced, hand-picked Professionals to serve you at your
-                doorstep
-              </Text>
+              {/* <Text className="exp" w={"25rem"} textAlign={"left"}> */}
+
+                
+              
               <br />
               <Box
                 bg={"whiteAlpha.900"}

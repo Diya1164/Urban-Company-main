@@ -1,5 +1,9 @@
+
+
+
 import React, { useState } from "react";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
+import { color } from "@chakra-ui/react";
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
@@ -22,16 +26,8 @@ const BookingForm = () => {
     "Home Repair",
   ];
 
-  
-  function sendEmail(e) {
-     e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
-
-  
-   }
-
   const handleChange = (e) => {
     const { name, value } = e.target;
- 
     setFormData({
       ...formData,
       [name]: value,
@@ -40,88 +36,177 @@ const BookingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_2kczggi', 'template_odppz92', e.target, '5qLyTAV_HIaK0ihoL')
-    .then((result) => {
-        window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
-    }, (error) => {
-    console.log(error.text);
-    });
-    console.log("Form Data Submitted:", formData);
-    alert("Your booking has been submitted!");
-    // Reset form after submission
+    emailjs
+      .sendForm("service_2kczggi", "template_odppz92", e.target, "5qLyTAV_HIaK0ihoL")
+      .then(
+        (result) => {
+          alert("Your booking has been submitted!");
+          window.location.reload();
+        },
+        (error) => {
+          console.error(error.text);
+        }
+      );
     setFormData({ name: "", email: "", phone: "", service: "" });
   };
 
   return (
-    <div style={styles.container}>
-      <form style={styles.form} onSubmit={handleSubmit}>
-        <h2 style={styles.title}>Service Booking</h2>
-        <label style={styles.label} htmlFor="name">Name</label>
-        <input
-          style={styles.input}
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Enter your name"
-          required
-        />
+    <div style={styles.page}>
+      <nav style={styles.navbar}>
+        <div style={styles.navTitle}>Service Booking</div>
+        <ul style={styles.navLinks}>
+        <li><a href="#contact">Home</a></li>
+          <li><a href="/About">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
 
-        <label style={styles.label} htmlFor="email">Email</label>
-        <input
-          style={styles.input}
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Enter your email"
-          required
-        />
+        </ul>
+      </nav>
+      <div style={styles.container}>
+        <form style={styles.form} onSubmit={handleSubmit}>
+          <h2 style={styles.title}>Book Your Service</h2>
+          <label style={styles.label} htmlFor="name">
+            Name
+          </label>
+          <input
+            style={styles.input}
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Enter your name"
+            required
+          />
+          <label style={styles.label} htmlFor="email">
+            Email
+          </label>
+          <input
+            style={styles.input}
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            required
+          />
+          <label style={styles.label} htmlFor="phone">
+            Phone No.
+          </label>
+          <input
+            style={styles.input}
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Enter your phone number"
+            required
+          />
 
-        <label style={styles.label} htmlFor="phone">Phone No.</label>
-        <input
-          style={styles.input}
-          type="tel"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="Enter your phone number"
-          required
-        />
+          <label style={styles.label} htmlFor="address">
+            Address
+          </label>
+          <input
+            style={styles.input}
+            type="address"
+            id="address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Enter your address"
+            required
+          />
 
-        <label style={styles.label} htmlFor="service">Service</label>
-        <select
-          style={styles.input}
-          id="service"
-          name="service"
-          value={formData.service}
-          onChange={handleChange}
-          required
-        >
-          <option value="">--Select a Service--</option>
-          {services.map((service, index) => (
-            <option key={index} value={service}>
-              {service}
-            </option>
-          ))}
-        </select>
+          <label style={styles.label} htmlFor="Landmark">
+           Landmark
+          </label>
+          <input
+            style={styles.input}
+            type="landmark"
+            id="landmark"
+            name="landmark"
+            value={formData.landmark}
+            onChange={handleChange}
+            placeholder="Enter your landmark"
+            required
+          />
 
-        <button style={styles.button} type="submit">Book Now</button>
-      </form>
+          <label style={styles.label} htmlFor="service">
+            Service
+          </label>
+          <select
+            style={styles.input}
+            id="service"
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            required
+          >
+            <option value="">--Select a Service--</option>
+            {services.map((service, index) => (
+              <option key={index} value={service}>
+                {service}
+              </option>
+            ))}
+          </select>
+          <button style={styles.button} type="submit">
+            Book Now
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
 const styles = {
+  page: {
+    height: "100%",
+    background: "linear-gradient(to right, #6a11cb, #2575fc)",
+    fontFamily: "'Arial', sans-serif",
+    width:"100%",
+    // margin:0,
+
+  },
+  navbar: {
+    width: "100%",
+    // back
+    backgroundColor: "#007bff",
+    padding: "10px 20px",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      // color:"white" ,
+    
+  },
+  navTitle: {
+    color: "white",
+    fontSize: "20px",
+    fontWeight: "bold",
+    // gap:"200000%",
+    
+  },
+  navBrand: {
+    fontSize: "20px",
+    fontWeight: "bold",
+  },
+  navLinks: {
+    listStyle: "none",
+    display: "flex",
+    gap: "15px",
+  },
+  navLinksItem: {
+    color: "#007bff",
+    textDecoration: "none",
+  },
   container: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#f8f9fa",
+  
+    height: "calc(100vh - 50px)",
   },
   form: {
     background: "#fff",
@@ -135,12 +220,19 @@ const styles = {
     textAlign: "center",
     marginBottom: "20px",
     color: "#333",
+    fontWeight: "bold",
   },
   label: {
     display: "block",
     marginBottom: "5px",
     color: "#555",
+    fontWeight: "600",
+    fontStyle: "italic",
+    textAlign: "left",
+  
   },
+  
+  
   input: {
     width: "100%",
     padding: "10px",
@@ -156,6 +248,7 @@ const styles = {
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
+    transition: "background 0.3s",
   },
   buttonHover: {
     background: "#0056b3",
@@ -163,35 +256,3 @@ const styles = {
 };
 
 export default BookingForm;
-
-
-
-// export default function ContactUs() {
-
-//   function sendEmail(e) {
-//     e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
-
-//     emailjs.sendForm('service_2kczggi', 'template_odppz92', e.target, '5qLyTAV_HIaK0ihoL')
-//       .then((result) => {
-//           window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
-//       }, (error) => {
-//           console.log(error.text);
-//       });
-//   }
-
-//   return (
-//     <form className="contact-form" onSubmit={sendEmail}>
-  
-//       <label>Name</label>
-//       <input type="text" name="from_name" />
-//       <label>Email</label>
-//       <input type="email" name="from_email" />
-//       <label>Subject</label>
-//       <input type="text" name="subject" />
-//       <label>Message</label>
-//       <textarea name="html_message" />
-      
-//       <input type="submit" value="Send" />
-//     </form>
-//   );
-// }
